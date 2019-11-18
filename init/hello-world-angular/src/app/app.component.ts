@@ -9,9 +9,14 @@ import { BehaviorSubject, observable, Observable, Subject } from 'rxjs';
 })
 export class AppComponent {
 
+  title = 'Hello World';
+
   constructor(private httpClient: HttpClient) {
     this.httpClient.get('http://127.0.0.1:8080/helloWorld')
-      .subscribe(this.success, this.error);
+      .subscribe((data: { message: string }) => {
+        this.title = data.message;
+        console.log(data);
+      }, this.error);
 
     const yunzhi = new Yunzhi();
 
@@ -21,8 +26,6 @@ export class AppComponent {
     yunzhi.get('b')
       .subscribe(this.success, this.error);
   }
-
-  title = 'hello-world';
 
   success(data) {
     console.log('请求成功');
