@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ public class TeacherController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @CrossOrigin(origins = "*")
     @GetMapping
     public List<Teacher> getAll() {
         List<Teacher> teachers = new ArrayList<>();
